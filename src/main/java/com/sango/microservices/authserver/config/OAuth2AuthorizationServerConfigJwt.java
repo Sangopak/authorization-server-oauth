@@ -37,18 +37,18 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("fooClientIdPassword")
+                .withClient("studentClientIdPassword")
                 .secret(passwordEncoder().encode("secret"))
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials")
-                .scopes("foo", "read", "write")
+                .scopes("read", "write")
                 .accessTokenValiditySeconds(3600)       // 1 hour
                 .refreshTokenValiditySeconds(2592000)  // 30 days
                 //.redirectUris("http://www.example.com","http://localhost:8089/")
                 .and()
-                .withClient("barClientIdPassword")
+                .withClient("studentProtectedResourceClientIdPassword")
                 .secret(passwordEncoder().encode("secret"))
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-                .scopes("bar", "read", "write")
+                .scopes("read", "write")
                 .accessTokenValiditySeconds(3600)       // 1 hour
                 .refreshTokenValiditySeconds(2592000);  // 30 days
                 //.redirectUris("http://www.example.com");
